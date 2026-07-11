@@ -25,6 +25,33 @@ import carolinePortrait from '../assets/pricing/caroline-portrait.jpg';
       />
     </div>
   </section>
+
+  <section id="form" class="form-section">
+    <div class="form-wrapper">
+      <h2>Let's Chat</h2>
+      <p class="form-intro">Fill out the details below and I'll get back to you within 24 hours.</p>
+
+      <form id="contactForm">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+
+        <div class="form-group">
+          <label for="message">Tell me about your vision</label>
+          <textarea id="message" name="message" rows="6" required></textarea>
+        </div>
+
+        <button type="submit" class="btn-outline">Send Message</button>
+        <p id="formStatus"></p>
+      </form>
+    </div>
+  </section>
 </Layout>
 
 <style>
@@ -61,6 +88,9 @@ import carolinePortrait from '../assets/pricing/caroline-portrait.jpg';
     font-size: 0.9rem;
     letter-spacing: 0.03em;
     transition: background 0.2s ease, color 0.2s ease;
+    background: transparent;
+    cursor: pointer;
+    font-family: 'Jost', sans-serif;
   }
 
   .btn-outline:hover {
@@ -79,6 +109,78 @@ import carolinePortrait from '../assets/pricing/caroline-portrait.jpg';
     display: block;
   }
 
+  .form-section {
+    padding: 6rem 5vw;
+    background: var(--color-taupe, #e8e2d8);
+  }
+
+  .form-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .form-wrapper h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: var(--color-dark-brown);
+    margin-bottom: 0.75rem;
+  }
+
+  .form-intro {
+    font-family: 'Jost', sans-serif;
+    color: var(--color-dark-brown);
+    margin-bottom: 2.5rem;
+    font-size: 1rem;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: left;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  label {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.03em;
+    color: var(--color-dark-brown);
+  }
+
+  input,
+  textarea {
+    font-family: 'Jost', sans-serif;
+    font-size: 1rem;
+    padding: 0.9rem 1rem;
+    border: 1px solid var(--color-dark-brown);
+    border-radius: 4px;
+    background: var(--color-cream);
+    color: var(--color-dark-brown);
+    resize: vertical;
+  }
+
+  input:focus,
+  textarea:focus {
+    outline: none;
+    border-color: var(--color-dark-brown);
+    box-shadow: 0 0 0 1px var(--color-dark-brown);
+  }
+
+  #formStatus {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.9rem;
+    color: var(--color-dark-brown);
+    margin-top: 0.5rem;
+    min-height: 1.2rem;
+  }
+
   @media (max-width: 768px) {
     .contact-section {
       grid-template-columns: 1fr;
@@ -86,3 +188,35 @@ import carolinePortrait from '../assets/pricing/caroline-portrait.jpg';
     }
   }
 </style>
+
+<script>
+  const form = document.getElementById('contactForm');
+  const status = document.getElementById('formStatus');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    status.textContent = 'Sending...';
+
+    const formData = new FormData(form);
+    const payload = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      message: formData.get('message'),
+    };
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) throw new Error();
+
+      status.textContent = 'Thank you! Your message has been sent.';
+      form.reset();
+    } catch {
+      status.textContent = 'Something went wrong. Please try again or email directly.';
+    }
+  });
+</script>
