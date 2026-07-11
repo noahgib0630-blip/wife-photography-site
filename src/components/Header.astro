@@ -1,0 +1,63 @@
+---
+const currentPath = Astro.url.pathname;
+
+const isActive = (path: string) => {
+  if (path === '/') return currentPath === '/';
+  return currentPath.startsWith(path);
+};
+---
+
+<header class="site-header">
+  <nav>
+    <a href="/" class="logo">CAROLINE GIBSON PHOTOGRAPHY</a>
+    <div class="nav-links">
+      <a href="/" class={isActive('/') ? 'active' : ''}>Home</a>
+      <a href="/pricing" class={isActive('/pricing') ? 'active' : ''}>Pricing</a>
+      <a href="/contact" class={isActive('/contact') ? 'active' : ''}>Contact</a>
+    </div>
+  </nav>
+</header>
+
+<style>
+  .site-header {
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid var(--color-taupe);
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--color-dark-brown);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .nav-links a {
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+    color: var(--color-dark-brown);
+    padding-bottom: 0.25rem;
+    border-bottom: 1px solid transparent;
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .nav-links a:hover {
+    color: var(--color-taupe);
+  }
+
+  .nav-links a.active {
+    color: var(--color-taupe);
+    border-bottom: 1px solid var(--color-taupe);
+  }
+</style>

@@ -1,0 +1,66 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+
+const images = Object.values(
+  import.meta.glob('/src/assets/portfolio/*.{jpg,jpeg,png,webp}', { eager: true })
+).map((mod) => mod.default);
+---
+
+<Layout title="Portfolio">
+  <main class="portfolio-collage">
+    <h1>Portfolio</h1>
+    <p class="intro">A collection of moments captured across weddings, portraits, and venues.</p>
+
+    <div class="collage-grid">
+      {images.map((img) => (
+        <div class="collage-item">
+          <Image src={img} alt="Photography by Caroline Gibson" />
+        </div>
+      ))}
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .portfolio-collage {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+  }
+
+  .intro {
+    color: var(--color-taupe);
+    margin-bottom: 2rem;
+    max-width: 600px;
+  }
+
+  .collage-grid {
+    column-count: 3;
+    column-gap: 1rem;
+  }
+
+  .collage-item {
+    margin-bottom: 1rem;
+  }
+
+.collage-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 4px;
+  object-fit: unset;
+}
+
+  @media (max-width: 900px) {
+    .collage-grid {
+      column-count: 2;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .collage-grid {
+      column-count: 1;
+    }
+  }
+</style>

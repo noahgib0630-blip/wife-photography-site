@@ -1,0 +1,57 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, getEntry, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const galleries = await getCollection('galleries');
+  return galleries.map((gallery) => ({
+    params: { id: gallery.id },
+  }));
+}
+
+const { id } = Astro.params;
+const gallery = await getEntry('galleries', id);
+const { Content } = await render(gallery);
+---
+
+<Layout title={gallery.data.title}>
+  <main class="gallery-page">
+    <h1>{gallery.data.title}</h1>
+    <p class="date">{gallery.data.date.toLocaleDateString()}</p>
+    {gallery.data.description && <p class="description">{gallery.data.description}</p>}
+
+    <div class="cover-image">
+      <img src={gallery.data.coverImage} alt={gallery.data.title} />
+    </div>
+
+    <Content />
+  </main>
+</Layout>
+
+<style>
+  .gallery-page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+  }
+
+  .date {
+    color: var(--color-taupe);
+    font-size: 0.9rem;
+    margin-top: -0.5rem;
+  }
+
+  .description {
+    margin-top: 1rem;
+    font-size: 1.05rem;
+  }
+
+  .cover-image {
+    margin: 2rem 0;
+  }
+
+  .cover-image img {
+    width: 100%;
+    border-radius: 4px;
+  }
+</style>

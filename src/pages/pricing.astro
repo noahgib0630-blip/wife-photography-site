@@ -1,0 +1,314 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import weddingBouquet from '../assets/pricing/wedding-bouquet.jpg';
+import couplesDancing from '../assets/pricing/couples-dancing.jpg';
+import portraitGuitar from '../assets/pricing/portrait-guitar.jpg';
+---
+
+<Layout title="Pricing — Caroline Gibson Photography">
+  <section class="pricing-hero">
+    <h1>Pricing</h1>
+    <p>
+      Your special day goes by quickly. When it's all over, these photos are all that will remain.
+      Photographs help you preserve the memory of your day and I never want you to lose the feeling
+      of how you felt in each moment. When you look back on these photos, I hope you remember those
+      moments as if you were experiencing it all over again.
+    </p>
+    <nav class="pricing-nav">
+      <a href="#wedding">Wedding</a>
+      <a href="#couples">Couples</a>
+      <a href="#family">Family</a>
+      <a href="#portraits">Portraits</a>
+    </nav>
+  </section>
+
+  <section id="wedding" class="price-section">
+    <div class="price-text">
+      <h2>Wedding</h2>
+      <p class="intro">Wedding options start at $1500. Inquire through my contact form for more details!</p>
+
+      <div class="option">
+        <h3>Option 01</h3>
+        <ul>
+          <li>Up to 6 hours of continuous coverage</li>
+          <li>One photographer</li>
+          <li>Edited photos via digital gallery</li>
+          <li>*Add a 2nd photographer for $400</li>
+        </ul>
+      </div>
+
+      <div class="option">
+        <h3>Option 02</h3>
+        <ul>
+          <li>Up to 8 hours of continuous coverage</li>
+          <li>One photographer</li>
+          <li>Edited photos via digital gallery</li>
+          <li>Flash drive/usb</li>
+          <li>Timeline assistance</li>
+          <li>Engagement session</li>
+          <li>Expedited turnaround of 2-3 weeks</li>
+          <li>*Add a 2nd photographer for $400</li>
+        </ul>
+      </div>
+
+      <div class="option">
+        <h3>Option 03</h3>
+        <ul>
+          <li>Up to 10 hours of continuous coverage</li>
+          <li>One photographer</li>
+          <li>Edited photos via digital gallery</li>
+          <li>Flash drive/usb</li>
+          <li>Timeline assistance</li>
+          <li>Engagement session</li>
+          <li>Expedited turnaround of 2-3 weeks</li>
+          <li>*Add a 2nd photographer for $400</li>
+        </ul>
+      </div>
+
+      <a href="/contact" class="btn-solid">Inquire!</a>
+    </div>
+    <div class="price-image">
+      <Image src={weddingBouquet} alt="Bouquet of red and cream flowers" width={1600} height={2000} quality={100} />
+    </div>
+  </section>
+
+  <section id="couples" class="price-section">
+    <div class="price-image">
+      <Image src={couplesDancing} alt="Couple dancing together in a sunlit field" width={1600} height={2000} quality={100} />
+    </div>
+    <div class="price-text">
+      <h2>Couples</h2>
+
+      <div class="option">
+        <h3>Couples | Starting at $350</h3>
+        <ul>
+          <li>45 minutes of coverage</li>
+          <li>One location</li>
+          <li>Edited photos via digital gallery</li>
+        </ul>
+      </div>
+
+      <div class="option">
+        <h3>Engagements | Starting at $400</h3>
+        <ul>
+          <li>1-2 hours of coverage</li>
+          <li>1-2 locations</li>
+          <li>1-2 outfits</li>
+          <li>Edited photos via digital gallery</li>
+        </ul>
+      </div>
+
+      <div class="option" id="family">
+        <h3>Family | Starting at $350</h3>
+        <ul>
+          <li>45 minutes of coverage</li>
+          <li>One location</li>
+          <li>Edited photos via digital gallery</li>
+        </ul>
+      </div>
+
+      <a href="/contact" class="btn-solid">Inquire!</a>
+    </div>
+  </section>
+
+  <section id="portraits" class="price-section">
+    <div class="price-text">
+      <h2>Portraits</h2>
+      <div class="option">
+        <h3>Seniors | Starting at $350</h3>
+        <ul>
+          <li>1-2 hours of coverage</li>
+          <li>1-2 locations</li>
+          <li>1-2 outfits</li>
+          <li>Edited photos via digital gallery</li>
+        </ul>
+      </div>
+      <a href="/contact" class="btn-solid">Inquire!</a>
+    </div>
+    <div class="price-image">
+      <Image src={portraitGuitar} alt="Senior portrait with guitar near a bridge at sunset" width={1600} height={2000} quality={100} />
+    </div>
+  </section>
+
+  <section class="closing-cta">
+    <h2>Want to make moments into sweet memories?</h2>
+    <p>Embrace the moment! Reach out today to book your photo session.</p>
+    <a href="/contact" class="btn-outline">Book Now!</a>
+  </section>
+</Layout>
+
+<style>
+  .pricing-hero {
+    text-align: center;
+    padding: 5rem 2rem 3rem;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .pricing-hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    color: var(--color-dark-brown);
+    margin-bottom: 1.5rem;
+  }
+
+  .pricing-hero p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--color-dark-brown);
+    margin-bottom: 2.5rem;
+  }
+
+  .pricing-nav {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .pricing-nav a {
+    background: var(--color-dark-brown);
+    color: var(--color-cream);
+    padding: 0.9rem 2rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    letter-spacing: 0.03em;
+    transition: opacity 0.2s ease;
+  }
+
+  .pricing-nav a:hover {
+    opacity: 0.8;
+  }
+
+  .price-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 600px;
+  }
+
+  .price-section.reverse {
+    direction: rtl;
+  }
+
+  .price-section.reverse .price-text {
+    direction: ltr;
+  }
+
+  .price-text {
+    padding: 4rem 5vw;
+    background: var(--color-cream);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .price-text h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: var(--color-dark-brown);
+    margin-bottom: 1rem;
+  }
+
+  .price-text .intro {
+    font-size: 0.95rem;
+    color: var(--color-dark-brown);
+    margin-bottom: 2rem;
+  }
+
+  .option {
+    margin-bottom: 2rem;
+  }
+
+  .option h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: var(--color-dark-brown);
+    margin-bottom: 0.5rem;
+  }
+
+  .option ul {
+    list-style: none;
+    padding: 0;
+    font-size: 0.9rem;
+    color: var(--color-dark-brown);
+    line-height: 1.6;
+  }
+
+  .price-image {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .price-image :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .btn-solid {
+    display: inline-block;
+    background: var(--color-dark-brown);
+    color: var(--color-cream);
+    padding: 0.9rem 2.5rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    letter-spacing: 0.03em;
+    width: fit-content;
+    transition: opacity 0.2s ease;
+  }
+
+  .btn-solid:hover {
+    opacity: 0.85;
+  }
+
+  .closing-cta {
+    text-align: center;
+    padding: 5rem 2rem;
+    background: var(--color-taupe);
+  }
+
+  .closing-cta h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: var(--color-dark-brown);
+    margin-bottom: 1rem;
+    max-width: 700px;
+    margin-inline: auto;
+  }
+
+  .closing-cta p {
+    color: var(--color-dark-brown);
+    margin-bottom: 2rem;
+  }
+
+  .btn-outline {
+    display: inline-block;
+    border: 1px solid var(--color-dark-brown);
+    color: var(--color-dark-brown);
+    padding: 0.9rem 2.5rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    letter-spacing: 0.03em;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  .btn-outline:hover {
+    background: var(--color-dark-brown);
+    color: var(--color-cream);
+  }
+
+  @media (max-width: 768px) {
+    .price-section {
+      grid-template-columns: 1fr;
+    }
+
+    .price-section.reverse {
+      direction: ltr;
+    }
+
+    .price-image {
+      min-height: 350px;
+    }
+  }
+</style>

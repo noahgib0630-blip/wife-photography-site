@@ -1,0 +1,88 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import carolinePortrait from '../assets/pricing/caroline-portrait.jpg';
+---
+
+<Layout title="Contact — Caroline Gibson Photography">
+  <section class="contact-section">
+    <div class="contact-text">
+      <h1>Get in touch.</h1>
+      <p>
+        I'm so happy you are considering me to capture these beautiful moments of life. I would love
+        to be a part of it! Once you submit this contact form, I'll be in touch within 24 hours.
+        I can't wait to tell your story, capture moments, and just get to hang out with amazing people!
+      </p>
+      <a href="#form" class="btn-outline">Contact Form</a>
+    </div>
+    <div class="contact-image">
+      <Image
+        src={carolinePortrait}
+        alt="Caroline Gibson holding a camera"
+        width={1600}
+        height={2000}
+        quality={100}
+      />
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .contact-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 4rem;
+    padding: 5rem 5vw;
+    min-height: 80vh;
+  }
+
+  .contact-text h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: var(--color-dark-brown);
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-text p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--color-dark-brown);
+    margin-bottom: 2rem;
+    max-width: 480px;
+  }
+
+  .btn-outline {
+    display: inline-block;
+    border: 1px solid var(--color-dark-brown);
+    color: var(--color-dark-brown);
+    padding: 0.9rem 2.5rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    letter-spacing: 0.03em;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  .btn-outline:hover {
+    background: var(--color-dark-brown);
+    color: var(--color-cream);
+  }
+
+  .contact-image {
+    overflow: hidden;
+    border-radius: 4px;
+  }
+
+  .contact-image :global(img) {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  @media (max-width: 768px) {
+    .contact-section {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+</style>
