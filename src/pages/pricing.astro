@@ -299,16 +299,21 @@ import portraitGuitar from '../assets/pricing/portrait-guitar.jpg';
   }
 
   @media (max-width: 768px) {
-    .price-section {
-      grid-template-columns: 1fr;
-    }
-
-    .price-section.reverse {
-      direction: ltr;
-    }
-
-    .price-image {
-      min-height: 350px;
-    }
+  .price-section {
+    grid-template-columns: 1fr;
   }
+
+  .price-section.reverse {
+    direction: ltr;
+  }
+
+  .price-image {
+    min-height: 350px;
+    order: -1;
+  }
+
+  .price-text {
+    order: 2;
+  }
+}
 </style>
