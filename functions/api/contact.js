@@ -27,17 +27,23 @@ export async function onRequestPost(context) {
       }),
     });
 
+    const resendData = await resendResponse.json();
+
     if (!resendResponse.ok) {
-      throw new Error('Failed to send email');
+      return new Response(
+        JSON.stringify({ error: 'Resend API error', details: resendData }),
+        { status: resendResponse.status, headers: { 'Content-Type': 'application/json' } }
+      );
     }
 
-    return new Response(JSON.stringify({ success: true }), {
-      status: 200,
-      headers: { 'Content-Type': 'application/json' },
-    });
+    return new Response(
+      JSON.stringify({ success: true, data: resendData }),
+      { status: 200, headers: { 'Content-Type': 'application/json' } }
+    );
+
   } catch (error) {
     return new Response(
-      JSON.stringify({ error: 'Something went wrong. Please try again.' }),
+      JSON.stringify({ error: 'Server error', details: error.message }),
       { status: 500, headers: { 'Content-Type': 'application/json' } }
     );
   }
