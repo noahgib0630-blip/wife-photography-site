@@ -16,6 +16,13 @@ const { title } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
+
+    <!-- Favicon: swaps based on light/dark mode -->
+    <link rel="icon" type="image/png" href="/favicon-dark.png" media="(prefers-color-scheme: light)" />
+    <link rel="icon" type="image/png" href="/favicon-light.png" media="(prefers-color-scheme: dark)" />
+
+    <!-- Fallback for browsers that ignore prefers-color-scheme -->
+    <link rel="icon" type="image/png" href="/favicon-dark.png" />
   </head>
   <body>
     <Header />
